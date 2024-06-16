@@ -11,6 +11,6 @@ the idea behind it remains.
 
 By design this is ESM / Deno module. If needed we can support NPM.
 
-# Demo
+# Usage
 
 Check decimals_test.ts code for examples
