@@ -1,7 +1,16 @@
 /**
- * Very simple yet power Decimals helper module
+ * Very simple yet power Decimals helper module to deal with float calcs.
+ * 
+ * @example
+ * ```ts
+ * import { Decimals } from 'decimals'
+ * 
+ * const amount = new Decimals('0.1').add(.2).value
+ * assert(amount === 0.3, '0.3 is expected')
+ * ```
+ * 
+ * More examples check the test cases.
  */
-
 interface Options {
   decimals?: number
   fromDecimal?: boolean
@@ -59,7 +68,7 @@ export class Decimals {
     this.intValue = Math.round(this.value * this.precision)
   }
 
-  add(value: DecimalsValue, options?: Options) {
+  add(value: DecimalsValue, options?: Options): Decimals {
     if(options && options.decimals) {
       this.adjust(options.decimals)
     }
@@ -69,11 +78,15 @@ export class Decimals {
     return this
   }
 
-  sum(value: DecimalsValue, options?: Options) {
+  /**
+   * This is an alias to add()
+   * @returns Decimals
+   */
+  sum(value: DecimalsValue, options?: Options): Decimals {
     return this.add(value, options)
   }
 
-  subtract(value: DecimalsValue, options?: Options) {
+  subtract(value: DecimalsValue, options?: Options): Decimals {
     if(options && options.decimals) {
       this.adjust(options.decimals)
     }
@@ -84,7 +97,7 @@ export class Decimals {
     return this
   }
 
-  multiply(value: DecimalsValue, options?: Options) {
+  multiply(value: DecimalsValue, options?: Options): Decimals {
     if(options && options.decimals) {
       this.adjust(options.decimals)
     }
@@ -94,7 +107,7 @@ export class Decimals {
     return this
   }
 
-  divide(value: DecimalsValue, options?: Options) {
+  divide(value: DecimalsValue, options?: Options): Decimals {
     if(options && options.decimals) {
       this.adjust(options.decimals)
     }
@@ -107,7 +120,7 @@ export class Decimals {
     return this
   }
 
-  equals(value: DecimalsValue, options?: Options) {
+  equals(value: DecimalsValue, options?: Options): boolean {
     if(options && options.decimals) {
       this.adjust(options.decimals)
     }
@@ -115,7 +128,7 @@ export class Decimals {
     return this.intValue === n
   }
 
-  toString(options?: Options) {
+  toString(options?: Options): string {
     if(options && options.decimals) {
       this.adjust(options.decimals)
       }
