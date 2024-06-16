@@ -20,7 +20,7 @@ export class Decimals {
   private decimals: number
   private precision: number
   
-  constructor(value: DecimalsValue, readonly options?: Options) {
+  constructor(value: DecimalsValue, options?: Options) {
     this.decimals = options?.decimals != null ? options.decimals: defaults.decimals!
     this.precision = 10 ** this.decimals
     let precision = this.precision
