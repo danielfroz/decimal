@@ -27,7 +27,7 @@ Deno.test({
 })
 
 Deno.test({
-  name: '2 decimals sub',
+  name: 'sub with 2 decimals',
   ignore: ignore,
   fn: () => {
     const amount = new Decimals(34.30)
@@ -38,7 +38,7 @@ Deno.test({
 })
 
 Deno.test({
-  name: '4 decimals multiplication',
+  name: 'multiplication with 4 decimals',
   ignore: false,
   fn: () => {
     const amount = new Decimals(34.4563, { decimals: 4 })
@@ -47,7 +47,7 @@ Deno.test({
 })
 
 Deno.test({
-  name: '2 decimals division',
+  name: 'division with 2 decimals',
   ignore: ignore,
   fn: () => {
     const amount = new Decimals(50)
@@ -75,7 +75,7 @@ Deno.test({
 })
 
 Deno.test({
-  name: 'sum of undefined',
+  name: 'sum with undefined variable',
   fn: () => {
     const amount = new Decimals(10_000)
 
