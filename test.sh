@@ -1,7 +1,6 @@
 #!/bin/sh
 #
 # Test script
-# Author: Daniel Froz <daniel.froz@actt.io>
 #
 
 CONFIG=""
