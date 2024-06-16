@@ -12,7 +12,7 @@ const defaults = {
   fromDecimal: false,
 } as Options
 
-export type DecimalsValue = number|string|Decimals
+export type DecimalsValue = number|string|Decimals|undefined
 
 export class Decimals {
   public intValue: number
@@ -33,7 +33,10 @@ export class Decimals {
   }
 
   private tonum(value: DecimalsValue) {
-    if(typeof(value) === 'number') {
+    if(value == null) {
+      return 0
+    }
+    else if(typeof(value) === 'number') {
       return value
     }
     else if(typeof(value) === 'string') {

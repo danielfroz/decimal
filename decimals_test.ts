@@ -73,3 +73,19 @@ Deno.test({
     assert(amount.toString() === '68.00')
   }
 })
+
+Deno.test({
+  name: 'sum of undefined',
+  fn: () => {
+    const amount = new Decimals(10_000)
+
+    let incr: number|undefined = 302
+    amount.add(incr)
+    assert(amount.value == 10_302)
+
+    // this shall not cause any problem...
+    incr = undefined
+    amount.add(incr)
+    assert(amount.value == 10_302)
+  }
+})
