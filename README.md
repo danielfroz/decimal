@@ -1,15 +1,15 @@
 # Introduction
 
 This is a really simple project for supporting float point operations in
-Javascript safely. Motivation is to have something that would work fine with
-small numbers. To guarantee floating operations like 0.1 + 0.2 == 0.3, this
-class uses integer.
+Javascript safely.
 
-This project is based on https://github.com/scurker/currency.js. Since the
-purposes is different; both the implementation and results are different; but
-the idea behind it remains.
+This package is meant to support currency operations safely. So math operations
+like 0.1 + 0.2 == 0.3 works as expected.
 
-By design this is ESM / Deno module. If needed we can support NPM.
+This project is based on https://github.com/scurker/currency.js.
+
+Implementation is different as well as its purpose. But the idea to working with
+integers is highly utilized.
 
 # Usage
 

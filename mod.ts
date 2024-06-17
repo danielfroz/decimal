@@ -1,1 +1,1 @@
-export * from './decimals.ts';
+export * from './decimal.ts';

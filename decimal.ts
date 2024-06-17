@@ -3,9 +3,9 @@
  * 
  * @example
  * ```ts
- * import { Decimals } from 'decimals'
+ * import { Decimal } from 'decimal'
  * 
- * const amount = new Decimals('0.1').add(.2).value
+ * const amount = new Decimal('0.1').add(.2).value
  * assert(amount === 0.3, '0.3 is expected')
  * ```
  * 
@@ -21,15 +21,15 @@ const defaults = {
   fromDecimal: false,
 } as Options
 
-export type DecimalsValue = number|string|Decimals|undefined
+export type DecimalValue = number|string|Decimal|undefined
 
-export class Decimals {
+export class Decimal {
   public intValue: number
   public value: number
   private decimals: number
   private precision: number
   
-  constructor(value: DecimalsValue, options?: Options) {
+  constructor(value: DecimalValue, options?: Options) {
     this.decimals = options?.decimals != null ? options.decimals: defaults.decimals!
     this.precision = 10 ** this.decimals
     let precision = this.precision
@@ -41,7 +41,7 @@ export class Decimals {
     this.value = this.intValue / precision
   }
 
-  private tonum(value: DecimalsValue) {
+  private tonum(value: DecimalValue) {
     if(value == null) {
       return 0
     }
@@ -52,7 +52,7 @@ export class Decimals {
       const v = value.replace(/[^0-9-.]+/,'')
       return parseFloat(v)
     }
-    else if(value instanceof Decimals) {
+    else if(value instanceof Decimal) {
       return value.value
     }
     else {
@@ -68,7 +68,7 @@ export class Decimals {
     this.intValue = Math.round(this.value * this.precision)
   }
 
-  add(value: DecimalsValue, options?: Options): Decimals {
+  add(value: DecimalValue, options?: Options): Decimal {
     if(options && options.decimals) {
       this.adjust(options.decimals)
     }
@@ -82,11 +82,11 @@ export class Decimals {
    * This is an alias to add()
    * @returns Decimals
    */
-  sum(value: DecimalsValue, options?: Options): Decimals {
+  sum(value: DecimalValue, options?: Options): Decimal {
     return this.add(value, options)
   }
 
-  subtract(value: DecimalsValue, options?: Options): Decimals {
+  subtract(value: DecimalValue, options?: Options): Decimal {
     if(options && options.decimals) {
       this.adjust(options.decimals)
     }
@@ -97,7 +97,7 @@ export class Decimals {
     return this
   }
 
-  multiply(value: DecimalsValue, options?: Options): Decimals {
+  multiply(value: DecimalValue, options?: Options): Decimal {
     if(options && options.decimals) {
       this.adjust(options.decimals)
     }
@@ -107,7 +107,7 @@ export class Decimals {
     return this
   }
 
-  divide(value: DecimalsValue, options?: Options): Decimals {
+  divide(value: DecimalValue, options?: Options): Decimal {
     if(options && options.decimals) {
       this.adjust(options.decimals)
     }
@@ -120,7 +120,7 @@ export class Decimals {
     return this
   }
 
-  equals(value: DecimalsValue, options?: Options): boolean {
+  equals(value: DecimalValue, options?: Options): boolean {
     if(options && options.decimals) {
       this.adjust(options.decimals)
     }
