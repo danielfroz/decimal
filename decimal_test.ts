@@ -1,3 +1,6 @@
+/**
+ * This is a DENO specific test file
+ */
 import { assert } from "jsr:@std/assert";
 import { Decimal } from './mod.ts';
 
@@ -16,6 +19,19 @@ Deno.test({
     assert(amount.toString() == '39.92')
   }
 });
+
+Deno.test({
+  name: 'sum with 2 decimals; constructor using fromDecimal',
+  ignore: ignore,
+  fn: () => {
+    const amount = new Decimal(3560, { fromDecimal: true })
+    assert(amount.value === 35.6, '35.6 is expected')
+    const addition = new Decimal('34.32')
+    const sum = amount.add(addition)
+    assert(sum.intValue === 6992, '6992 is expected')
+    assert(sum.value === 69.92, '69.92 is expected')
+  }
+})
 
 Deno.test({
   name: 'sum with 4 decimals from string; negative number',

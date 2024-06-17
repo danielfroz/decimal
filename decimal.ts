@@ -32,13 +32,10 @@ export class Decimal {
   constructor(value: DecimalValue, options?: Options) {
     this.decimals = options?.decimals != null ? options.decimals: defaults.decimals!
     this.precision = 10 ** this.decimals
-    let precision = this.precision
-    if(options?.fromDecimal) {
-      precision = 1
-    }
+    const p = options?.fromDecimal ? 1: this.precision
     const n = this.tonum(value)
-    this.intValue = Math.round(n * precision)
-    this.value = this.intValue / precision
+    this.intValue = Math.round(n * p)
+    this.value = this.intValue / this.precision
   }
 
   private tonum(value: DecimalValue) {
